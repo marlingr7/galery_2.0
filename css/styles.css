@@ -111,10 +111,6 @@ input:focus {
   color: rgb(92, 67, 0);
 }
 
-button{
-  outline: none;
-}
-
 .cont-menu button {
   width: 15%;
   border: 1px solid transparent;
@@ -208,6 +204,7 @@ button{
   align-items: center;
   justify-content: center;
   background-color: var(--background-color);
+  outline: none;
 }
 
 i {
@@ -286,6 +283,7 @@ button p {
   color: var(--letter-color);
   border: 1px solid transparent;
   background: transparent;
+  outline: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -352,6 +350,12 @@ button p {
     width: 23%;
     height: 31%;
   
+  }
+
+  .img-div:hover{
+    width: 23%;
+    height: 31%;
+    margin: 2%;
   }
 
   .cont-menu p:first-of-type,
