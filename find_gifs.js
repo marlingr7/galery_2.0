@@ -9,6 +9,6 @@ async function getGifs(name) {
     let json = await response.json();
     return json;
   } catch (err) {
-    return "No gifs found";
+    return alert(err);
   }
 }

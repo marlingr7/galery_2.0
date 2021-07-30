@@ -385,10 +385,6 @@ button p {
   .cont-menu button p {
     font-size: 15px;
   }
-
-  .first-line p:last-of-type {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 505px) {
@@ -440,6 +436,10 @@ button p {
   input,
   .cont-menu button p {
     font-size: 14px;
+  }
+
+  .first-line p:last-of-type{
+    font-size: 7px;
   }
 
 }
