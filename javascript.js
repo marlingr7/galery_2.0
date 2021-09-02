@@ -18,9 +18,9 @@ async function createElements(gifsName) {
   inputGifs.style.background = "transparent";
   inputGifs.style.borderRadius = "0";
 
-  if (json == undefined){
+  if (json == undefined) {
     console.log(err);
-  }else{
+  } else {
     if (json.data.length == 0) {
       //No gifs found
       let text = "No gifs found. Please try something else!!!";
@@ -47,7 +47,7 @@ async function createElements(gifsName) {
       `;
       imgs.innerHTML = divImg;
     }
-  } 
+  }
 }
 
 async function findGifs(e) {
@@ -85,19 +85,19 @@ function cleaningAll() {
   inputGifs.value = "";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   createElements("gifs");
 });
 
 btnFindGifs.addEventListener("click", findGifs, false);
 btnClearAll.addEventListener("click", cleaningAll, false);
 
-
-document.addEventListener("keypress", function (e) {
-  if (e.which == 13) {
-    findGifs(e);
-  }
-}, false);
-
-
-
+document.addEventListener(
+  "keypress",
+  function (e) {
+    if (e.which == 13) {
+      findGifs(e);
+    }
+  },
+  false
+);
