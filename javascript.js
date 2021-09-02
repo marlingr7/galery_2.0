@@ -1,9 +1,7 @@
 let inputGifs = document.getElementById("input-gifs");
-let btnFindGifs = document.getElementById("btn-find-gifs");
-let btnGifsOnly = document.getElementById("btn-all-gifs");
-let btnClearAll = document.getElementById("btn-clear-all");
+let btnFindGifs = document.getElementById("btn-search");
+let btnClearAll = document.getElementById("btn-clear");
 let imgs = document.getElementById("imgs");
-let divHidden = document.getElementsByClassName("show-hidde");
 let princ = document.getElementById("princ");
 
 function cleaning() {
@@ -14,19 +12,14 @@ function cleaning() {
   }
 }
 
-function showInput() {
-  inputGifs.style.background = "var(--line-color)";
-  inputGifs.style.borderRadius = "10px";
-}
-
-async function createElements() {
+async function createElements(gifsName) {
   //Getting json
-  let json = await getGifs(inputGifs.value);
+  let json = await getGifs(gifsName);
   inputGifs.style.background = "transparent";
   inputGifs.style.borderRadius = "0";
 
   if (json == undefined){
-    console.log(json);
+    console.log(err);
   }else{
     if (json.data.length == 0) {
       //No gifs found
@@ -63,11 +56,10 @@ async function findGifs(e) {
 
   //Validate input
   if (inputGifs.value == "") {
-    inputGifs.setAttribute("placeholder", "you must look for some gif");
-    showInput();
+    inputGifs.setAttribute("placeholder", "you must look for a gif");
   } else {
     //Finding Gifs
-    createElements();
+    createElements(inputGifs.value);
     confPositive(inputGifs);
   }
   e.preventDefault();
@@ -86,25 +78,20 @@ function moveGifsFront() {
   }
 }
 
-function cleaningInput() {  
-  //Clean input
-  inputGifs.setAttribute("placeholder", "find your gifs");
-  inputGifs.style.background = "transparent";
-  inputGifs.style.borderRadius = "0";
-}
-
 function cleaningAll() {
   //Delete all
   cleaning();
-  cleaningInput();
+  createElements("gifs");
   inputGifs.value = "";
 }
 
-inputGifs.addEventListener("focusin", showInput, false);
-inputGifs.addEventListener("focusout", cleaningInput, false);
+document.addEventListener("DOMContentLoaded", function() {
+  createElements("gifs");
+});
+
 btnFindGifs.addEventListener("click", findGifs, false);
-btnGifsOnly.addEventListener("click", moveGifsFront, false);
 btnClearAll.addEventListener("click", cleaningAll, false);
+
 
 document.addEventListener("keypress", function (e) {
   if (e.which == 13) {
